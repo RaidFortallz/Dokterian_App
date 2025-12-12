@@ -1,6 +1,6 @@
-import 'package:doct_app/colors/color_theme.dart';
+import 'package:doct_app/features/auth/config/colors/color_theme.dart';
 
-import 'package:doct_app/widgets/login_widget/build_login_card.dart';
+import 'package:doct_app/features/auth/presentation/widgets/login_widget/build_login_card.dart';
 
 import 'package:flutter/material.dart';
 

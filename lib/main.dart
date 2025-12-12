@@ -1,10 +1,16 @@
-import 'package:doct_app/routes/app_pages.dart';
-import 'package:doct_app/routes/route_names.dart';
+import 'package:doct_app/features/auth/config/routes/app_pages.dart';
+import 'package:doct_app/features/auth/config/routes/route_names.dart';
+import 'package:doct_app/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
+
   WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setSystemUIOverlayStyle(

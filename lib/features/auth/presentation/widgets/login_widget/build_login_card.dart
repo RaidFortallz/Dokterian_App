@@ -1,7 +1,7 @@
-import 'package:doct_app/colors/color_theme.dart';
-import 'package:doct_app/controller/auth/login_controller.dart';
-import 'package:doct_app/routes/route_names.dart';
-import 'package:doct_app/widgets/materials_widget/textfield_widget.dart';
+import 'package:doct_app/features/auth/config/colors/color_theme.dart';
+import 'package:doct_app/features/auth/presentation/controller/auth/login_controller.dart';
+import 'package:doct_app/features/auth/config/routes/route_names.dart';
+import 'package:doct_app/features/auth/presentation/widgets/materials_widget/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +27,7 @@ Widget buildLoginCard() {
               splashColor: AppColors.wrGrey.withValues(alpha: 0.1),
               highlightColor: AppColors.wrGrey.withValues(alpha: 0.1),
               onTap: () {
-                print("di klik");
+                
               },
               child: Container(
                 height: 48,

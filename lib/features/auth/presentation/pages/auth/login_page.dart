@@ -1,7 +1,7 @@
-import 'package:doct_app/colors/color_theme.dart';
-import 'package:doct_app/controller/auth/login_controller.dart';
+import 'package:doct_app/features/auth/config/colors/color_theme.dart';
+import 'package:doct_app/features/auth/presentation/controller/auth/login_controller.dart';
 
-import 'package:doct_app/widgets/login_widget/build_header_log.dart';
+import 'package:doct_app/features/auth/presentation/widgets/login_widget/build_header_log.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

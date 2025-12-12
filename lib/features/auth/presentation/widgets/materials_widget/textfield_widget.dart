@@ -1,4 +1,4 @@
-import 'package:doct_app/colors/color_theme.dart';
+import 'package:doct_app/features/auth/config/colors/color_theme.dart';
 import 'package:doct_app/utils/input_decoration_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +10,7 @@ class TextfieldWidget extends StatelessWidget {
   final TextInputAction? textInputAction;
   final double? height;
   final double? width;
+  final Widget? suffix;
 
   const TextfieldWidget({
     super.key,
@@ -20,6 +21,7 @@ class TextfieldWidget extends StatelessWidget {
     this.textInputAction,
     this.height,
     this.width,
+    this.suffix,
   });
 
   @override
@@ -33,6 +35,7 @@ class TextfieldWidget extends StatelessWidget {
         textInputAction: textInputAction,
         obscureText: obscureText,
         autocorrect: false,
+        autofocus: false,
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: TextStyle(
@@ -41,7 +44,8 @@ class TextfieldWidget extends StatelessWidget {
           ),
           enabledBorder: defaultBorder(AppColors.wrGrey.withValues(alpha: 0.3)),
           focusedBorder: defaultBorder(AppColors.wrGrey.withValues(alpha: 0.9)),
-          contentPadding: EdgeInsets.symmetric(horizontal: 14)
+          contentPadding: EdgeInsets.symmetric(horizontal: 14),
+          suffixIcon: suffix
         ),
       ),
     );
