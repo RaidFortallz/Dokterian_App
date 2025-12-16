@@ -1,24 +1,17 @@
-import 'package:doct_app/features/auth/domain/entities/user_entity.dart';
-import 'package:doct_app/features/auth/domain/repository/auth_repository.dart';
+import 'package:doct_app/features/auth/data/models/users_model.dart';
+import 'package:doct_app/features/auth/domain/entities/users_entity.dart';
+import 'package:doct_app/features/auth/domain/repositories/auth_repository.dart';
 
 class RegisterUsecase {
-  final AuthRepository authRepository;
+  final AuthRepository repository;
 
-  RegisterUsecase({required this.authRepository});
+  RegisterUsecase({required this.repository});
 
-  Future<String> call({
+  Future<UsersEntity> call({
     required String email,
-    required String username,
     required String password,
-  }) async {
-    final user = UserEntity(
-      email: email,
-      username: username,
-      password: password,
-    );
-
-    final token = await authRepository.register(user: user);
-
-    return token;
+    required UsersModel user,
+  }) {
+    return repository.register(email: email, password: password, user: user);
   }
 }
