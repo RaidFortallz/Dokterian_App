@@ -41,6 +41,7 @@ Widget buildHeaderLogin() {
                 ],
               ),
             ),
+            // card login (input textfield)
             Positioned(child: Center(child: buildLoginCard())),
           ],
         ),

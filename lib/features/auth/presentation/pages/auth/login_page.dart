@@ -1,12 +1,14 @@
 import 'package:doct_app/features/auth/config/colors/color_theme.dart';
 import 'package:doct_app/features/auth/presentation/controller/auth/login_controller.dart';
+import 'package:doct_app/features/auth/presentation/controller/auth/auth_controller.dart';
 
 import 'package:doct_app/features/auth/presentation/widgets/login_widget/build_header_log.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
-  final controller = Get.find<LoginController>();
+  final authController = Get.find<AuthController>();
+  final loginController = Get.find<LoginController>();
   LoginPage({super.key});
 
   @override
@@ -22,7 +24,9 @@ class LoginPage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                buildHeaderLogin(), //buildHeader & buildLoginCard
+
+                // header & card body login
+                buildHeaderLogin(), 
                 
               ],
             ),

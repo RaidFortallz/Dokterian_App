@@ -52,7 +52,7 @@ class AuthFirebaseDatasourceImpl implements AuthFirebaseDatasource {
     final uid = result.user!.uid;
 
     //simpan data user ke firestore
-    await firestore.collection('users').doc(uid).set(user.toJson());
+    await firestore.collection('users').doc(uid).set(user.toJson()); 
 
     //balikin user model
     return user;

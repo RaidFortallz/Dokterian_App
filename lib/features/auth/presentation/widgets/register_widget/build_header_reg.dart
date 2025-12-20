@@ -58,6 +58,8 @@ Widget buildHeaderRegister() {
                 ],
               ),
             ),
+            
+            // card body register
             Positioned(child: Center(child: BuildRegisterCard(),))
           ],
           

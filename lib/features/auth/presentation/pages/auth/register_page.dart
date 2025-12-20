@@ -1,11 +1,13 @@
 import 'package:doct_app/features/auth/config/colors/color_theme.dart';
 import 'package:doct_app/features/auth/presentation/controller/auth/register_controller.dart';
+import 'package:doct_app/features/auth/presentation/controller/auth/auth_controller.dart';
 import 'package:doct_app/features/auth/presentation/widgets/register_widget/build_header_reg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisterPage extends StatelessWidget {
-  final controller = Get.find<RegisterController>();
+  final authController = Get.find<AuthController>();
+  final registerController = Get.find<RegisterController>();
    RegisterPage({super.key});
 
   @override
@@ -29,7 +31,10 @@ class RegisterPage extends StatelessWidget {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: SingleChildScrollView(
-            child: Column(children: [buildHeaderRegister()]),
+            child: Column(
+              children: [
+                // header & card body register
+                buildHeaderRegister()]),
           ),
         ),
       ),

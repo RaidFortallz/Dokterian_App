@@ -1,12 +1,14 @@
 import 'package:doct_app/features/auth/config/colors/color_theme.dart';
-import 'package:doct_app/features/auth/presentation/controller/auth/login_controller.dart';
 import 'package:doct_app/features/auth/config/routes/route_names.dart';
+import 'package:doct_app/features/auth/presentation/controller/auth/login_controller.dart';
+import 'package:doct_app/features/auth/presentation/controller/auth/auth_controller.dart';
 import 'package:doct_app/features/auth/presentation/widgets/materials_widget/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 Widget buildLoginCard() {
-  final controller = Get.find<LoginController>();
+  final authController = Get.find<AuthController>();
+  final loginController = Get.find<LoginController>();
 
   return Container(
     width: 327,
@@ -14,6 +16,13 @@ Widget buildLoginCard() {
     decoration: BoxDecoration(
       color: AppColors.wrWhite,
       borderRadius: BorderRadius.circular(10.0),
+      boxShadow: [
+        BoxShadow(
+          color: AppColors.wrTextBlack.withValues(alpha: 0.08),
+          blurRadius: 20,
+          offset: Offset(0, 8),
+        ),
+      ],
     ),
     child: Padding(
       padding: EdgeInsetsGeometry.all(24.0),
@@ -23,12 +32,11 @@ Widget buildLoginCard() {
             color: AppColors.wrWhite,
             borderRadius: BorderRadius.circular(10.0),
             child: InkWell(
+              // btn masuk google
               borderRadius: BorderRadius.circular(10.0),
               splashColor: AppColors.wrGrey.withValues(alpha: 0.1),
               highlightColor: AppColors.wrGrey.withValues(alpha: 0.1),
-              onTap: () {
-                
-              },
+              onTap: () {},
               child: Container(
                 height: 48,
                 decoration: BoxDecoration(
@@ -86,17 +94,23 @@ Widget buildLoginCard() {
             ],
           ),
           SizedBox(height: 24),
+          //textdield 1
           TextfieldWidget(
+            controller: loginController.email,
             hintText: "Email",
             height: 46,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
           ),
           SizedBox(height: 16),
+          //textdield 2
           TextfieldWidget(
+            controller: loginController.password,
             hintText: "Password",
             height: 46,
-            obscureText: true,
+            isPassword: true,
+            obsecureState: loginController.isPasswordHidden,
+            onToggle: loginController.togglePassword,
             keyboardType: TextInputType.visiblePassword,
             textInputAction: TextInputAction.done,
           ),
@@ -108,9 +122,9 @@ Widget buildLoginCard() {
                 () => Transform.scale(
                   scale: 0.9,
                   child: Checkbox(
-                    value: controller.rememberMe.value,
+                    value: loginController.rememberMe.value,
                     onChanged: (v) {
-                      controller.toggleRememberMe();
+                      loginController.toggleRememberMe();
                     },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadiusGeometry.circular(4.0),
@@ -160,13 +174,13 @@ Widget buildLoginCard() {
               borderRadius: BorderRadius.circular(10),
               splashColor: AppColors.wrGrey.withValues(alpha: 0.7),
               highlightColor: AppColors.wrGrey.withValues(alpha: 0.3),
-              onTap: () {},
+              onTap: () => loginController.submitLogin(authController),
               child: SizedBox(
                 height: 48,
                 width: double.infinity,
                 child: Center(
                   child: Text(
-                    "Log In",
+                    "Login",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
